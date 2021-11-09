@@ -1,3 +1,4 @@
+
 .col-align {
     text-align: center;
 
@@ -14,3 +15,33 @@
 .row-space {
     margin-bottom: 2em;
 }
+
+/* html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: url(coffeebackground.jpg) repeat center
+    center;
+        background-size: cover;
+        height: 800px;
+        position: sticky;
+        top: 230px;
+}
+
+.header h1 {
+    font-family: 'Share Tech Mono', monospace;
+    text-align: left;
+    line-height: 1.5;
+    color: #5e93d3;
+    font-size: 60px;
+    font-weight: 100; 
+    background-color: #080808;
+    height: 275px;
+    width: 50%;
+    border: 2px solid white;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 40px 10px;
+} */

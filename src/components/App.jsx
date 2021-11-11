@@ -1,6 +1,8 @@
 import axios from 'axios';
 import React, { Component } from 'react';
 import './App.css';
+import Login from './Login/Login';
+import jwtDecode from 'jwt-decode';
 
 class App extends Component {
     constructor(props){
@@ -33,11 +35,11 @@ token = () => {
 async get_All_Coffee(){
     
         // const jwt = localStorage.getItem('token');
-        // const response = await axios.get('http://127.0.0.1:8000/api/coffee/all/');
+        // const response = await axios.get('http://127.0.0.1:3000/api/coffee/all/');
         // console.log(response.data);
 
     try {
-        const response = await axios.get('http://127.0.0.1:8000/api/coffee/all/');
+        const response = await axios.get('http://127.0.0.1:3000/api/coffee/all/');
         this.setState({
             allCoffee: response.data
         }, ()=>console.log(this.state.allCoffee))
@@ -51,7 +53,7 @@ async get_All_Coffee(){
 
 registerUser = async (userToBeregisteredObject) => {
   try {
-    const response = await axios.post('http://127.0.0.1:8000/api/authentication' , userToBeRegisteredObject);
+    const response = await axios.post('http://127.0.0.1:3000/api/authentication' , userToBeRegisteredObject);
     this.loginUser({'userName' : userToBeRegisteredObject.userName, 'password' : userToBeRegisteredObject.password});
     window.location = '/register';
   } catch(error) {
@@ -63,7 +65,7 @@ loginUser = async (loggedInUserObject) => {
   console.log("Inside LogInUser Callback")
   console.log("object", loggedInUserObject)
   try {
-    const response = await axios.post('http://127.0.0.1:8000/api/authentication/login/', loggedInUserObject);
+    const response = await axios.post('http://127.0.0.1:3000/api/authentication/login/', loggedInUserObject);
     localStorage.setItem('token', response.data.token);
     this.token();
     this.getUserDetails(this.state.userLoggedIn.id);
@@ -82,9 +84,22 @@ loggedOutUser = () => {
 
     render() {
         return (
-            <h1>Valhalla Coffee Company</h1>
+          <><h1>Valhalla Coffee Company</h1><div className="App">
+                {console.log("loggedin user: ", this.state.user)}
+
+                <header className="App-header">
+                    <NavBar />
+                    <Switch>
+                        <Route exact={true} path="/" render={props => <Landing {...props} user={this.state.userLoggedIn} getUserDetails={this.getUserDetails} />} />
+                        <Route path="/login" render={props => <Login {...props} login={this.loginUser} />} />
+                        <Redirect to="/" />
+                    </Switch>
+                </header>
+            </div></>  
+
             
-        )
+            
+        );
     }
 }
 

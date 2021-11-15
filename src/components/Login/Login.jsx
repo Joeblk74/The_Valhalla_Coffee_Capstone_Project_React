@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-
+import NavBar from "../NavBar/NavBar";
 
 
 const LoginDiv = styled.div`
@@ -31,7 +31,7 @@ const LoginDiv = styled.div`
 `
 
 const Login = (props) => {
-  const [loginUser, setLoginUser] = useState({ username: "", password: "" });
+  const [loginUser, setLoginUser] = useState();
 
   const handleChange = (event) => {
     setLoginUser(previousState => ({
@@ -41,16 +41,17 @@ const Login = (props) => {
   }
 
   const handleSubmit = (event) => {  
-    // debugger;  
+
     console.log("Inside Handle Submit")
     event.preventDefault()
     console.log("handlesubmit", loginUser);
     props.login(loginUser)
-    window.location = '/';
+    // window.location = '/';
   }
 
   return (
     <div>
+   
         <LoginDiv> 
         <div className = "LoginContainer">
         <form action="" onSubmit={handleSubmit}>
@@ -58,8 +59,8 @@ const Login = (props) => {
           <input
 
             className = "loginInput"
-            name="Email"
-            value={loginUser.Email}
+            name="username"
+        
             onChange={handleChange}
             type="text"
           />
@@ -68,8 +69,8 @@ const Login = (props) => {
           <input
 
             className = "loginInput"
-            name="Password"
-            value={loginUser.Password}
+            name="password"
+         
             onChange={handleChange}
             type="password"
           />

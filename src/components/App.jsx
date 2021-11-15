@@ -1,8 +1,13 @@
 import axios from 'axios';
 import React, { Component } from 'react';
 import './App.css';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import background from './coffeebackground.jpg';
+// import { RegisterUser } from './Register/Register';
+import NavBar from './NavBar/NavBar';
 import Login from './Login/Login';
-import jwtDecode from 'jwt-decode';
+import {RegisterUser} from './Register/Register'
+import jwt_decode from 'jwt-decode';
 
 class App extends Component {
     constructor(props){
@@ -14,14 +19,14 @@ class App extends Component {
     }
 componentDidMount(){
     this.get_All_Coffee();
-    let userId = this.token();
-    this.getUserDetails(userId)
+    // let userId = this.token();
+    // this.getUserDetails(userId)
 }
 
 token = () => {
     const jwt = localStorage.getItem('token');
     try {
-        const user = jwtDecode(jwt);
+        const user = jwt_decode(jwt);
         this.setState({
             userLoggedIn: user
         });
@@ -33,11 +38,6 @@ token = () => {
 
 
 async get_All_Coffee(){
-    
-        // const jwt = localStorage.getItem('token');
-        // const response = await axios.get('http://127.0.0.1:3000/api/coffee/all/');
-        // console.log(response.data);
-
     try {
         const response = await axios.get('http://127.0.0.1:3000/api/coffee/all/');
         this.setState({
@@ -51,29 +51,34 @@ async get_All_Coffee(){
 
 };
 
-registerUser = async (userToBeregisteredObject) => {
+registerUser = async (userToBeRegisteredObject) => {
+    let thing = {
+        "username": userToBeRegisteredObject.username,
+        "password": userToBeRegisteredObject.password,
+        "email": userToBeRegisteredObject.email,
+        "first_name":userToBeRegisteredObject.first_name,
+        "last_name": userToBeRegisteredObject.last_name,
+        "middle_name": userToBeRegisteredObject.middle_name,
+        "prefix":userToBeRegisteredObject.prefix,
+    }
+    console.log(userToBeRegisteredObject)
   try {
-    const response = await axios.post('http://127.0.0.1:3000/api/authentication' , userToBeRegisteredObject);
-    this.loginUser({'userName' : userToBeRegisteredObject.userName, 'password' : userToBeRegisteredObject.password});
-    window.location = '/register';
+    const response = await axios.post('http://127.0.0.1:8000/api/auth/register/' , thing);
+   
   } catch(error) {
     console.log(error, 'error with register user');  
   }
+  this.loginUser({'username' : userToBeRegisteredObject.username, 'password' : userToBeRegisteredObject.password});
+  window.location ="/"
 }
 
 loginUser = async (loggedInUserObject) => {
   console.log("Inside LogInUser Callback")
   console.log("object", loggedInUserObject)
-  try {
-    const response = await axios.post('http://127.0.0.1:3000/api/authentication/login/', loggedInUserObject);
-    localStorage.setItem('token', response.data.token);
-    this.token();
-    this.getUserDetails(this.state.userLoggedIn.id);
-    console.log("Login State user:" , this.state.userLoggedIn)
-  } catch(error) {
-      console.log(error, 'error with logged in user');
-      return error
-  }
+    const response = await axios.post('http://127.0.0.1:8000/api/auth/login/', loggedInUserObject);
+    console.log(response.data)
+    localStorage.setItem('token', response.data.access);
+
 }
 
 loggedOutUser = () => {
@@ -84,17 +89,13 @@ loggedOutUser = () => {
 
     render() {
         return (
-          <><h1>Valhalla Coffee Company</h1><div className="App">
-                {console.log("loggedin user: ", this.state.user)}
-
-                <header className="App-header">
-                    <NavBar />
-                    <Switch>
-                        <Route exact={true} path="/" render={props => <Landing {...props} user={this.state.userLoggedIn} getUserDetails={this.getUserDetails} />} />
-                        <Route path="/login" render={props => <Login {...props} login={this.loginUser} />} />
-                        <Redirect to="/" />
-                    </Switch>
-                </header>
+            <><div className="App">
+                {/* <NavBar /> */}
+                <h1>Valhalla Coffee Company</h1>
+                <Routes>
+                    <Route path="/register" element={<RegisterUser registerUser ={this.registerUser}/>}/>
+                    <Route path="/login" element={<Login login={this.loginUser} />} />
+                </Routes>
             </div></>  
 
             

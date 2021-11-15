@@ -90,7 +90,7 @@ loggedOutUser = () => {
     render() {
         return (
             <><div className="App">
-                {/* <NavBar /> */}
+                <NavBar />
                 <h1>Valhalla Coffee Company</h1>
                 <Routes>
                     <Route path="/register" element={<RegisterUser registerUser ={this.registerUser}/>}/>

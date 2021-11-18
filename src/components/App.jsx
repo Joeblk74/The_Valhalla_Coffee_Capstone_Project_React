@@ -8,6 +8,7 @@ import NavBar from './NavBar/NavBar';
 import Login from './Login/Login';
 import {RegisterUser} from './Register/Register'
 import jwt_decode from 'jwt-decode';
+import CoffeeProducts from './CoffeeProducts/CoffeeProducts'
 
 class App extends Component {
     constructor(props){
@@ -18,7 +19,7 @@ class App extends Component {
         };
     }
 componentDidMount(){
-    this.get_All_Coffee();
+    this.getAllCoffee();
     // let userId = this.token();
     // this.getUserDetails(userId)
 }
@@ -37,11 +38,12 @@ token = () => {
 }
 
 
-async get_All_Coffee(){
+async getAllCoffee(){
     try {
-        const response = await axios.get('http://127.0.0.1:3000/api/coffee/all/');
+        const response = await axios.get('http://127.0.0.1:8000/api/coffee/all/');
+        console.log(response);
         this.setState({
-            allCoffee: response.data
+            coffee: response.data
         }, ()=>console.log(this.state.allCoffee))
     }   catch (error) {
         console.log(error, 'error with get all coffee');
@@ -95,6 +97,7 @@ loggedOutUser = () => {
                 <Routes>
                     <Route path="/register" element={<RegisterUser registerUser ={this.registerUser}/>}/>
                     <Route path="/login" element={<Login login={this.loginUser} />} />
+                    <Route path="/coffee" element={<CoffeeProducts products={this.state.coffee} />} />
                 </Routes>
             </div></>  
 

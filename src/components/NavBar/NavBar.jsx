@@ -3,11 +3,13 @@ import { Button } from "react-bootstrap";
 import "./NavBar.css";
 
 
+
 function NavBar() {
     return (
+      // <NavBar bg="dark"variant="light">
       <container >
        <div className="nav-container">
-        <nav className="nav">
+        <nav className="navbar">
          <Link to="/">
           <Button className="nav-button" variant="primary">Home</Button>
          </Link>
@@ -29,6 +31,7 @@ function NavBar() {
         </nav>
        </div>
       </container>
+      // </NavBar>
     );
    }
    export default NavBar;

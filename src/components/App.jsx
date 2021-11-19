@@ -9,6 +9,8 @@ import Login from './Login/Login';
 import {RegisterUser} from './Register/Register'
 import jwt_decode from 'jwt-decode';
 import CoffeeProducts from './CoffeeProducts/CoffeeProducts'
+import ProductDetail from './ProductDetail/ProductDetail';
+
 
 class App extends Component {
     constructor(props){
@@ -16,6 +18,7 @@ class App extends Component {
         this.state = {
             coffee: [],
             user: [],
+            selectedProduct: {}
         };
     }
 componentDidMount(){
@@ -97,7 +100,11 @@ loggedOutUser = () => {
                 <Routes>
                     <Route path="/register" element={<RegisterUser registerUser ={this.registerUser}/>}/>
                     <Route path="/login" element={<Login login={this.loginUser} />} />
-                    <Route path="/coffee" element={<CoffeeProducts products={this.state.coffee} />} />
+                    <Route path="/coffee" element={<CoffeeProducts
+                        selectedProduct={this.state.selectedProduct} 
+                        onClick={(product)=>this.setState({selectedProduct : product})}
+                        products={this.state.coffee} />} />
+                    <Route path="/detail" element={<ProductDetail selectedProduct={this.state.selectedProduct}/> } />
                 </Routes>
             </div></>  
 

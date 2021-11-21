@@ -104,7 +104,7 @@ loggedOutUser = () => {
                         selectedProduct={this.state.selectedProduct} 
                         onClick={(product)=>this.setState({selectedProduct : product})}
                         products={this.state.coffee} />} />
-                    <Route path="/detail" element={<ProductDetail selectedProduct={this.state.selectedProduct}/> } />
+                    <Route path="/detail/:id" element={<ProductDetail coffee={this.state.coffee}/> } />
                 </Routes>
             </div></>  
 

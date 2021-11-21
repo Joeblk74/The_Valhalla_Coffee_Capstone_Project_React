@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 function CoffeeProducts({products, onClick, selectedProduct}) {
     console.log(selectedProduct);
     return(
@@ -7,7 +7,7 @@ function CoffeeProducts({products, onClick, selectedProduct}) {
         <div>Coffee Products</div>
             <ol>
                 {products.map((product) => (
-                    <li onClick={()=>onClick(product)}>{product.flavor}</li>
+                     <Link to={`/detail/${product.id}`}><li>{product.flavor}</li></Link>
 
                 ))};  
             </ol>

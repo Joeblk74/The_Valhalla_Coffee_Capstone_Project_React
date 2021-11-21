@@ -1,11 +1,21 @@
 import React from 'react'
+import {useParams} from 'react-router-dom'
 
-function ProductDetail (){
 
+function ProductDetail ({coffee}){
+const params = useParams()
+const product = coffee.find((item)=>item.id==params.id)
+    console.log(product)
     return(
         <div>
-            <div>Product Detail</div>
-            
+            {coffee.length > 0 && (
+                <>
+                <h1>{product.flavor}</h1>
+                <p>{product.origin}</p>
+                <p>{product.description}</p>
+                <p>{product.price}</p>
+                </>
+            )}
         </div>
     )
 }

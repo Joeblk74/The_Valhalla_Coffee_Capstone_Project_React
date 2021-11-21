@@ -17,7 +17,7 @@ class App extends Component {
         super(props);
         this.state = {
             coffee: [],
-            user: [],
+            user: {},
             selectedProduct: {}
         };
     }
@@ -69,33 +69,40 @@ registerUser = async (userToBeRegisteredObject) => {
     console.log(userToBeRegisteredObject)
   try {
     const response = await axios.post('http://127.0.0.1:8000/api/auth/register/' , thing);
+    this.loginUser({'username' : userToBeRegisteredObject.username, 'password' : userToBeRegisteredObject.password});
+    window.location ="/"
    
   } catch(error) {
     console.log(error, 'error with register user');  
   }
-  this.loginUser({'username' : userToBeRegisteredObject.username, 'password' : userToBeRegisteredObject.password});
-  window.location ="/"
 }
 
 loginUser = async (loggedInUserObject) => {
-  console.log("Inside LogInUser Callback")
-  console.log("object", loggedInUserObject)
-    const response = await axios.post('http://127.0.0.1:8000/api/auth/login/', loggedInUserObject);
-    console.log(response.data)
-    localStorage.setItem('token', response.data.access);
+//   console.log("Inside LogInUser Callback")
+//   console.log("object", loggedInUserObject)
+    try{
+        const response = await axios.post('http://127.0.0.1:8000/api/auth/login/', loggedInUserObject);
+        console.log('login response', response.data)
+        localStorage.setItem('token', response.data.access);
+        loggedInUserObject.token = response.data.access
+        this.setState({user : loggedInUserObject})
+        this.props.history.push("/")
+    } catch (error){
+        console.log(error)
+    }
 
 }
 
 loggedOutUser = () => {
     localStorage.removeItem('token');
-    window.location = '/';
-    this.setState({userLoggedIn : null});
+    // window.location = '/';
+    this.setState({user : null});
   }
 
     render() {
         return (
             <><div className="App">
-                <NavBar />
+                <NavBar user ={this.state.user} loggedOutUser ={this.loggedOutUser} />
                 <h1>Valhalla Coffee Company</h1>
                 <Routes>
                     <Route path="/register" element={<RegisterUser registerUser ={this.registerUser}/>}/>

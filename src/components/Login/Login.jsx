@@ -55,7 +55,7 @@ const Login = (props) => {
         <LoginDiv> 
         <div className = "LoginContainer">
         <form action="" onSubmit={handleSubmit}>
-          <label htmlFor="">Email</label>
+          <label htmlFor="">User Name</label>
           <input
 
             className = "loginInput"

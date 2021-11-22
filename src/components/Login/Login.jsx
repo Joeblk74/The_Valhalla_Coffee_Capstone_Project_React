@@ -8,8 +8,9 @@ const LoginDiv = styled.div`
 .LoginContainer{
   width: 100%;
   // height: 100%;
-  background-color: #eeeeee;
-  color: red;
+  background-color: #eeeeee00;
+  color: #3412f3;
+  font-weight: bolder;
   display:flex; 
   justify-content:center;
   align-items:center;
@@ -23,7 +24,8 @@ const LoginDiv = styled.div`
   // margin: 8px;
   display: inline-block;
   border: 1px solid #ccc;
-  box-sizing: border-box
+  box-sizing: border-box;
+  background-color: #ebf1f129;
 }
 
 

@@ -1,14 +1,23 @@
 
 .nav-container{
-    color: brown;
-    background-color : rgb(44, 37, 0);
+    color:#3412f3;
+    background-color : rgb(244 243 242 / 0%);
     width: 100%;
-    height: 150px;
+    height: 75px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 40px;
 
+}
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited, .btn {
+    background-color:  #ebf1f129 !important;
+    border-color:  #ebf1f129 !important;
+    color:  #3412f3 !important;
+    font-weight: bold !important;
+}
+.btn{
+    color:black
 }
 
 /* .nav-button a {
@@ -37,6 +46,7 @@
     margin-left: 2px;
     margin-right: 2px;
 }
+
 
 .nav {
     color: brown;

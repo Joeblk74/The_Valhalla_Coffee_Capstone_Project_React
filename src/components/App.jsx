@@ -103,7 +103,7 @@ loggedOutUser = () => {
         return (
             <><div className="App">
                 <NavBar user ={this.state.user} loggedOutUser ={this.loggedOutUser} />
-                <h1>Valhalla Coffee Company</h1>
+                <h1></h1>
                 <Routes>
                     <Route path="/register" element={<RegisterUser registerUser ={this.registerUser}/>}/>
                     <Route path="/login" element={<Login login={this.loginUser} />} />

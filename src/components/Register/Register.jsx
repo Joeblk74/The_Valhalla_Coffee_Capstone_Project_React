@@ -6,13 +6,13 @@ const RegisterDiv = styled.div`
 .Register-Container{
   width: 100%;
   // height: 100%;
-  background-color: #eeeeee;
-  color: red;
+  color:  #3412f3;
   display:flex; 
   justify-content:center;
   align-items:center;
   height:100vh;
-
+  font-weight: bold;
+  background-color: #eeeeee00;
 }
 
 .Register-Input{
@@ -21,7 +21,8 @@ const RegisterDiv = styled.div`
   // margin: 8px;
   display: inline-block;
   border: 1px solid #ccc;
-  box-sizing: border-box
+  box-sizing: border-box;
+  background-color: #eeeeee00;
 }
 
 

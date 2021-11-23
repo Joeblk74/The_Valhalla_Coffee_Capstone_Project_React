@@ -1,28 +1,28 @@
 import React, {useState} from 'react';
 import styled from "styled-components";
-
+import { Button } from "react-bootstrap";
 const RegisterDiv = styled.div`
 
 .Register-Container{
   width: 100%;
   // height: 100%;
-  color:  #3412f3;
+  color:  #4860c2;
   display:flex; 
   justify-content:center;
   align-items:center;
   height:100vh;
   font-weight: bold;
-  background-color: #eeeeee00;
+  background-color: #090909bd;
 }
 
 .Register-Input{
   width: 100%;
-  padding: 12px 20px;
-  // margin: 8px;
+  padding: 10px 10px;
+  margin: 5px 10px;
   display: inline-block;
-  border: 1px solid #ccc;
   box-sizing: border-box;
-  background-color: #eeeeee00;
+  background-color: #ebf1f129;
+  font-size: 10px;
 }
 
 
@@ -79,7 +79,7 @@ export const RegisterUser = (props) => {
         <input className = "Register-Input" name="middle_name"  onChange={handleChange} type="text"/>
         <label htmlFor="">Prefix</label>
         <input className = "Register-Input" name="prefix"  onChange={handleChange} type="text"/>
-        <button type="submit">Create Account</button>
+        <Button type="submit">Create Account</Button>
       </form>
       </div>
       </RegisterDiv>

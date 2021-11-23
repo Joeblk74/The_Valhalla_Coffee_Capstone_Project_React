@@ -102,6 +102,7 @@ loggedOutUser = () => {
     render() {
         return (
             <><div className="App">
+                
                 <NavBar user ={this.state.user} loggedOutUser ={this.loggedOutUser} />
                 <h1></h1>
                 <Routes>

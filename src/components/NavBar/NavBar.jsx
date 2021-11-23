@@ -6,7 +6,7 @@ function NavBar({ user, loggedOutUser }) {
   return (
     // <NavBar bg="dark"variant="light">
       <div className="nav-container">
-        <h1>Valhalla Coffee Company</h1>
+        <h1></h1>
         <nav className="navbar">
           <Link to="/">
             <Button className="nav-button" variant="primary">

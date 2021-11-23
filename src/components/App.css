@@ -25,11 +25,15 @@
     background-image: url("https://images.unsplash.com/photo-1565814219055-2b0e1a5b9275?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1220&q=80");
         background-size: cover;
         background-repeat: no-repeat;
+        
 } 
 
-.Logo {
-    background-image: url(./valhallalogo.png);
-}
+
+/* .Logo {
+    background-image: url('https://d1ozqqh7vh3ykm.cloudfront.net/2021/45/74152928/thumb_33d1f043c8561a4.png');
+    background-size: 30px 40px;
+    background-repeat: no-repeat;
+} */
 
 /* .header h1 {
     font-family: 'Share Tech Mono', monospace;

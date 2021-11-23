@@ -1,29 +1,31 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import NavBar from "../NavBar/NavBar";
+import { Button } from "react-bootstrap";
 
 
 const LoginDiv = styled.div`
 
 .LoginContainer{
   width: 100%;
-  // height: 100%;
-  background-color: #eeeeee00;
-  color: #3412f3;
+  // height: 75%
+  background-color: #090909bd;
+  color: #4860c2;
   font-weight: bolder;
   display:flex; 
   justify-content:center;
   align-items:center;
   height:100vh;
+ 
 
 }
 
 .loginInput{
   width: 100%;
-  padding: 12px 20px;
-  // margin: 8px;
+  padding: 10px 10px;
+  margin: 10px 10px;
   display: inline-block;
-  border: 1px solid #ccc;
+  // border: px solid #ccc;
   box-sizing: border-box;
   background-color: #ebf1f129;
 }
@@ -76,7 +78,7 @@ const Login = (props) => {
             onChange={handleChange}
             type="password"
           />
-          <button type = "submit">Login</button>
+          <Button type = "submit">Login</Button>
         </form>
         </div>
         </LoginDiv>

@@ -1,12 +1,7 @@
-
-body {
-
-    background: url(coffeebackround.jpg) repeat center
-    center;
-        background-size: cover;
-        height: 800px;
-        position: sticky;
-        top: 230px;
-} 
+/* form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+} */
 
 

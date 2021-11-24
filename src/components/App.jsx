@@ -2,15 +2,16 @@ import axios from 'axios';
 import React, { Component } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import background from './coffeebackground.jpg';
-// import { RegisterUser } from './Register/Register';
 import NavBar from './NavBar/NavBar';
 import Login from './Login/Login';
 import {RegisterUser} from './Register/Register'
 import jwt_decode from 'jwt-decode';
 import CoffeeProducts from './CoffeeProducts/CoffeeProducts'
 import ProductDetail from './ProductDetail/ProductDetail';
-
+import AboutValhalla from './About/About';
+import ShoppingCart from './ShoppingCart/ShoppingCart';
+import Subscribe from './Subscribe/Subscribe';
+import {Image} from 'react-bootstrap'
 
 class App extends Component {
     constructor(props){
@@ -101,20 +102,29 @@ loggedOutUser = () => {
 
     render() {
         return (
-            <><div className="App">
+            <div className="App">
+
                 
                 <NavBar user ={this.state.user} loggedOutUser ={this.loggedOutUser} />
-                <h1></h1>
+                    <div className="AppContainer">
                 <Routes>
+
                     <Route path="/register" element={<RegisterUser registerUser ={this.registerUser}/>}/>
                     <Route path="/login" element={<Login login={this.loginUser} />} />
                     <Route path="/coffee" element={<CoffeeProducts
                         selectedProduct={this.state.selectedProduct} 
                         onClick={(product)=>this.setState({selectedProduct : product})}
                         products={this.state.coffee} />} />
+                    <Route path="/subscribe" element={<Subscribe
+                        products={this.state.coffee} />} />
                     <Route path="/detail/:id" element={<ProductDetail coffee={this.state.coffee}/> } />
+                    <Route path="/about" element={<AboutValhalla/>}/>
+                    <Route path="/shoppingcart" element={<ShoppingCart/>}/>
+                    <Route path="/" exact element={<Image fluid style={{width : "60%", opacity : .95}} src= "/Images/valhallalogo8.png"/>}/>
+
                 </Routes>
-            </div></>  
+                    </div> 
+            </div>  
 
             
             

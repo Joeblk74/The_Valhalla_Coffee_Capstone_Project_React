@@ -1,0 +1,18 @@
+
+
+.CoffeeContainer {
+    width: 75%;
+    background-color: #090909bd;
+    color: #4860c2;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+  
+}
+
+.CardContainer {
+width: 90%;
+justify-content: center;
+}

@@ -15,11 +15,12 @@ function NavBar({ user, loggedOutUser }) {
           </Link>
           {user && user.token ? (
             <>
+                {/* alert("You have been successfully logged out.) */}
               <Button
                 className="nav-button"
                 variant="primary"
                 onClick={loggedOutUser}
-              >
+                >
                 Logout
               </Button>
             </>
@@ -44,12 +45,17 @@ function NavBar({ user, loggedOutUser }) {
           </Link>
           <Link to="/subscribe">
             <Button className="nav-button" variant="primary">
-              Subscribe
+              Coffee Club
             </Button>
           </Link>
           <Link to="/shoppingcart">
             <Button className="nav-button" variant="primary">
               Shopping Cart
+            </Button>
+            </Link>
+            <Link to="/about">
+            <Button className="nav-button" variant="primary">
+              About
             </Button>
           </Link>
         </nav>

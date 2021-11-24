@@ -1,24 +1,25 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-function CoffeeProducts({products, onClick, selectedProduct}) {
-    console.log(selectedProduct);
-    return(
-        <div>
-        <div>Coffee Products</div>
-            <ol>
-                {products.map((product) => (
-                     <Link to={`/detail/${product.id}`}><li>{product.flavor}</li></Link>
+import React from "react";
+import { Link } from "react-router-dom";
+import CoffeeCard from "./CoffeeCard";
+import "./Coffee.css";
+import {Row,Col} from "react-bootstrap";
 
-                ))};  
-            </ol>
-            <div>
-                <div>{selectedProduct.flavor}</div>
-                <div>{selectedProduct.description}</div>
-                <div>{selectedProduct.origin}</div>
-                <div>{selectedProduct.price}</div>
-            </div>
-            </div>    
-    )
+function CoffeeProducts({ products }) {
+  return (
+    <div className="CoffeeContainer"> 
+    <img style={{width : "30%"}} src= "/Images/valhallalogo8.png"/>
+      <h1>Coffee Products</h1>
+      <Row className="CardContainer">
+        {products.map((product) => (
+            <Col key={product.id} sm={12} md={6} lg={4} style={{margin:"10px"}}>
+            <CoffeeCard product={product}/>
+            </Col>
 
+
+        ))}
+    
+      </Row>
+    </div>
+  );
 }
-export default CoffeeProducts
+export default CoffeeProducts;

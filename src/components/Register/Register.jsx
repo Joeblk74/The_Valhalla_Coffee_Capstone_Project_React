@@ -3,6 +3,9 @@ import styled from "styled-components";
 import { Button } from "react-bootstrap";
 const RegisterDiv = styled.div`
 
+{
+  width: 60%;
+}
 .Register-Container{
   width: 100%;
   // height: 100%;
@@ -10,9 +13,9 @@ const RegisterDiv = styled.div`
   display:flex; 
   justify-content:center;
   align-items:center;
-  height:100vh;
   font-weight: bold;
   background-color: #090909bd;
+  padding: 35px 10px;
 }
 
 .Register-Input{
@@ -22,7 +25,7 @@ const RegisterDiv = styled.div`
   display: inline-block;
   box-sizing: border-box;
   background-color: #ebf1f129;
-  font-size: 10px;
+  font-size: 18px;
 }
 
 
@@ -54,11 +57,12 @@ export const RegisterUser = (props) => {
   }
 
   return(
-    <div>
-      <RegisterDiv>
-  
+
+    
+    <RegisterDiv>
+        <>
       <div className = "Register-Container">
-        
+      <img style={{width : "50%", padding : "10px"}} src= "/Images/valhallalogo8.png"/>
       <form action="" onSubmit={handleSubmit} >
         <label for="">First Name</label>
         <input className = "Register-Input" name="first_name" onChange={handleChange} type="text"/>
@@ -79,10 +83,11 @@ export const RegisterUser = (props) => {
         <input className = "Register-Input" name="middle_name"  onChange={handleChange} type="text"/>
         <label htmlFor="">Prefix</label>
         <input className = "Register-Input" name="prefix"  onChange={handleChange} type="text"/>
-        <Button type="submit">Create Account</Button>
+        <Button  type="submit">Create Account</Button>
+        
       </form>
       </div>
+      </>
       </RegisterDiv>
-    </div>
   )
 }

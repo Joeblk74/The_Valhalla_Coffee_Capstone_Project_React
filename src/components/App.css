@@ -25,9 +25,25 @@
     background-image: url("https://images.unsplash.com/photo-1565814219055-2b0e1a5b9275?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1220&q=80");
         background-size: cover;
         background-repeat: no-repeat;
+        min-height: 100vh;
         
 } 
+.App {
+    min-height: 100vh;
+}
 
+.AppContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 5px;
+    align-items: center;
+    min-height: calc(100vh - 40px);
+    /* background-color: #09090970;
+    color: #4860c2; */
+    
+
+}
 
 /* .Logo {
     background-image: url('https://d1ozqqh7vh3ykm.cloudfront.net/2021/45/74152928/thumb_33d1f043c8561a4.png');

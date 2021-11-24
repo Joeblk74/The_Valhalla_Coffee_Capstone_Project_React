@@ -2,36 +2,31 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import NavBar from "../NavBar/NavBar";
 import { Button } from "react-bootstrap";
+import "./Login.css"
 
 
 const LoginDiv = styled.div`
 
-.LoginContainer{
-  width: 100%;
-  // height: 75%
+{
+  width: 50%;
   background-color: #090909bd;
   color: #4860c2;
   font-weight: bolder;
-  display:flex; 
-  justify-content:center;
-  align-items:center;
-  height:100vh;
- 
+  padding:50px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} `
 
-}
-
-.loginInput{
-  width: 100%;
-  padding: 10px 10px;
-  margin: 10px 10px;
+const LoginInput=styled.input `{
+  width: 90%;
+  padding: 10px;
+  margin: 10px;
   display: inline-block;
   // border: px solid #ccc;
   box-sizing: border-box;
   background-color: #ebf1f129;
 }
-
-
-
 `
 
 const Login = (props) => {
@@ -54,13 +49,14 @@ const Login = (props) => {
   }
 
   return (
-    <div>
+    
    
-        <LoginDiv> 
-        <div className = "LoginContainer">
-        <form action="" onSubmit={handleSubmit}>
+    <LoginDiv> 
+
+          <img style={{width : "50%"}} src= "/Images/valhallalogo8.png"/>
+        <form onSubmit={handleSubmit}>
           <label htmlFor="">User Name</label>
-          <input
+          <LoginInput
 
             className = "loginInput"
             name="username"
@@ -70,7 +66,7 @@ const Login = (props) => {
           />
           <br />
           <label htmlFor="">Password</label>
-          <input
+          <LoginInput
 
             className = "loginInput"
             name="password"
@@ -78,11 +74,10 @@ const Login = (props) => {
             onChange={handleChange}
             type="password"
           />
-          <Button type = "submit">Login</Button>
+          <Button type = "submit" style={{textAlign:"center"}}>Login</Button>
         </form>
-        </div>
+
         </LoginDiv>
-      </div>
     
   );
 };

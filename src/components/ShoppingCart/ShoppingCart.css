@@ -1,0 +1,8 @@
+.CartContainer{
+    width: 50%;
+    background-color: #090909bd;
+    color: #4860c2;
+    display:flex;
+    flex-direction: column;
+    align-items:flex-start;
+}

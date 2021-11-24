@@ -2,6 +2,7 @@ import React,{useState, useEffect} from "react";
 import { useParams } from "react-router-dom";
 import { Col, Row, ListGroup, Button, Image } from "react-bootstrap";
 import "./ProductDetail.css"
+import uuid from "react-uuid"
 
 
 function ProductDetail({ coffee }) {
@@ -16,6 +17,9 @@ function ProductDetail({ coffee }) {
   setCart(items)
   },[params.id])
   const addToCart = ()=>{
+      const lastIndex = cart.length - 1
+      const cart_id=cart.length > 0 ? cart[lastIndex].cart_id + 1 : 1
+      product.cart_id = cart_id
       const newCart=([...cart, product])
       localStorage.setItem("coffeeCart", JSON.stringify(newCart))
     setCart([...cart, product])

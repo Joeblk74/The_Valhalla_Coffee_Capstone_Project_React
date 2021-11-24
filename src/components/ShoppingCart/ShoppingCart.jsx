@@ -1,4 +1,4 @@
-import {Button} from "react-bootstrap";
+import {Button, Col, Row} from "react-bootstrap";
 import React,{useState, useEffect} from "react";
 import "./ShoppingCart.css"
 
@@ -11,27 +11,35 @@ function ShoppingCart({ coffee }) {
     setCart(items)
     },[])
 
-    const addToCart = (item)=>{
-        const newCart=([...cart, item])
+    const removeFromCart = (id)=>{
+        const newCart=cart.filter(item => item.cart_id !== id)
         localStorage.setItem("coffeeCart", JSON.stringify(newCart))
-      setCart([...cart, item])
+      setCart(newCart)
     }
     return (
       <>
         <img style={{width : "25%"}} src= "/Images/valhallalogo8.png"/>
       <div className="CartContainer">
-        <div>
-          {cart.length && (
-              cart.map(item => (
+        <Row>
+          {cart.length>0 && (
+            <>
+        <Col sm={12} md={6}>
+              {cart.map((item,i) => (
               <div>
                   <h3>{item.flavor}</h3>
                   <p>${item.price}</p>
-                   <Button>Remove</Button>
+                   <Button onClick={() => removeFromCart(item.cart_id)}>Remove</Button>
               </div>
 
-              ))
-          )}
-          </div>
+              ))}
+          
+          </Col>
+          <Col sm={12} md={6}>
+            <h2>Total : ${cart.reduce((total, item) => total + item.price, 0)}</h2>
+            </Col>
+            </>     
+            )}
+          </Row>
       </div>
       </>
     );

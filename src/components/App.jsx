@@ -24,6 +24,10 @@ class App extends Component {
     }
 componentDidMount(){
     this.getAllCoffee();
+    const userFromStorage = localStorage.getItem("coffee user")
+    if (userFromStorage){
+        this.setState({user:JSON.parse(userFromStorage)})
+    }
     // let userId = this.token();
     // this.getUserDetails(userId)
 }
@@ -87,7 +91,8 @@ loginUser = async (loggedInUserObject) => {
         localStorage.setItem('token', response.data.access);
         loggedInUserObject.token = response.data.access
         this.setState({user : loggedInUserObject})
-        this.props.history.push("/")
+        localStorage.setItem("coffee user", JSON.stringify(loggedInUserObject) )
+        window.location = '/'
     } catch (error){
         console.log(error)
     }
@@ -96,6 +101,7 @@ loginUser = async (loggedInUserObject) => {
 
 loggedOutUser = () => {
     localStorage.removeItem('token');
+    localStorage.removeItem('coffee user');
     // window.location = '/';
     this.setState({user : null});
   }
